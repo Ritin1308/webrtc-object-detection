@@ -1,20 +1,31 @@
-# Real-time WebRTC Multi-Object Detection
+# 🎯 WebRTC Real-Time Object Detection
 
-This project is a real-time, multi-object detection system that streams live video from a phone's browser to a desktop browser via WebRTC. It performs inference using either a server-side model or a client-side WASM model and overlays the detection results onto the video feed.
-
-[cite_start]This submission fulfills the requirements of the interview task. [cite: 1]
+A real-time demo that streams video from a phone (or laptop webcam) to a browser via WebRTC, performs object detection, and overlays bounding boxes in near real-time.
 
 ---
 
-## 🚀 One-Command Start
+## ✨ Features
 
-**Prerequisites**: Docker & Docker Compose must be installed.
+- 📱 **Phone Camera Streaming** – capture video directly from phone browser  
+- 🌐 **WebRTC Signaling Server** – low-latency peer-to-peer streaming  
+- 🖥️ **Desktop Viewer** – receive and overlay detections on live video  
+- 🤖 **Object Detection Overlay** – bounding boxes + labels drawn in browser  
+- ⚡ **Two Modes** –  
+  - **WASM (default):** lightweight, runs in browser (TensorFlow.js / ONNX runtime)  
+  - **Server:** inference on backend (Python / ONNX) for higher accuracy  
+- 📊 **Metrics Collection** – auto-download `metrics.json` with FPS, latency, bandwidth  
+- 🔄 **Backpressure Handling** – frame dropping & queue control to avoid lag  
+- 🔗 **Ngrok Integration** – optional HTTPS tunnel for remote phone access  
 
-[cite_start]To build and run the entire application in its default low-resource (WASM) mode, execute the following command: [cite: 13, 73]
+---
 
+## 🚀 Quick Start
+
+### 1. Clone & Start
 ```bash
-# Clone the repository, make the script executable, and start the services
 git clone <your-repo-url>
-cd <repo-folder>
+cd webrtc-object-detection
 chmod +x start.sh
-./start.sh
+./start.sh             # default (wasm mode)
+./start.sh --mode server # run with server inference
+./start.sh --ngrok       # run with HTTPS remote access
