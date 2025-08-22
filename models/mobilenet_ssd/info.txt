@@ -1,0 +1,8 @@
+Placeholder for TensorFlow.js MobileNet SSD model.
+
+To use a real model:
+1. Download a TensorFlow.js model (model.json + .bin files)
+2. Place them in this directory
+3. Update the model URL in InferenceManager.js
+
+For now, the app will use MobileNet classification as fallback.
